@@ -5,7 +5,7 @@ public record CreateProductRequest(string Name, List<string> Category, string De
 
 public record CreateProductResponse(Guid Id);
 
-public class CreateProductEndpoint : ICarterModule
+public class CreateProductsEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
