@@ -6,23 +6,25 @@ public record CreateProductCommand(
 
 public record CreateProductResult(Guid Id);
 
-internal class CreateProductCommandHandler
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+{
+    public CreateProductCommandValidator()
+    {
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
+        RuleFor(x => x.Category).NotEmpty().WithMessage("Category is required");
+        RuleFor(x => x.ImageFile).NotEmpty().WithMessage("ImageFile is required");
+        RuleFor(x => x.Price).NotEmpty().WithMessage("Price is required");
+    }
+}
+
+internal class CreateProductCommandHandler(
+    IDocumentSession session,
+    ILogger<CreateProductCommandHandler> logger)
     : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    private readonly IDocumentSession _session;
-    private readonly ILogger<CreateProductCommandHandler> _logger;
-
-    public CreateProductCommandHandler(
-        IDocumentSession session, 
-        ILogger<CreateProductCommandHandler> logger)
-    {
-        _session = session;
-        _logger = logger;
-    }
-
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("CreateProductCommandHandler.Handle called with {@Query}", command);
+        logger.LogInformation("CreateProductCommandHandler.Handle called with {@Query}", command);
         
         // 1. create Product entity from command object
         var product = new Product
@@ -37,8 +39,8 @@ internal class CreateProductCommandHandler
         // TODO
         // 2. save to db
 
-        _session.Store(product);
-        await _session.SaveChangesAsync(cancellationToken);
+        session.Store(product);
+        await session.SaveChangesAsync(cancellationToken);
 
 
         // 3. return CreateProductResult result
