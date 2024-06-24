@@ -15,20 +15,15 @@ public class DeleteProductByIdCommandValidator : AbstractValidator<DeleteProduct
 internal class DeleteProductByIdCommandHandler : ICommandHandler<DeleteProductByIdCommand, DeleteProductByIdResult>
 {
     private readonly IDocumentSession _session;
-    private readonly ILogger<DeleteProductByIdCommandHandler> _logger;
 
     public DeleteProductByIdCommandHandler(
-        IDocumentSession session, 
-        ILogger<DeleteProductByIdCommandHandler> logger)
+        IDocumentSession session)
     {
         _session = session;
-        _logger = logger;
     }
 
     public async Task<DeleteProductByIdResult> Handle(DeleteProductByIdCommand command, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("DeleteProductByIdHandler.Handle called with {@Command}", command);
-
         _session.Delete<Product>(command.Id);
 
         await _session.SaveChangesAsync(cancellationToken);
