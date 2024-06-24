@@ -4,6 +4,13 @@ public record DeleteProductByIdCommand(Guid Id) : ICommand<DeleteProductByIdResu
 
 public record DeleteProductByIdResult(bool Success);
 
+public class DeleteProductByIdCommandValidator : AbstractValidator<DeleteProductByIdCommand>
+{
+    public DeleteProductByIdCommandValidator()
+    {
+        RuleFor(x => x.Id).NotEmpty().WithMessage("Product ID is required");
+    }
+}
 
 internal class DeleteProductByIdCommandHandler : ICommandHandler<DeleteProductByIdCommand, DeleteProductByIdResult>
 {

@@ -26,7 +26,7 @@ internal class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, G
 
         if (product == null)
         {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(query.Id);
         }
         
         return new GetProductByIdResult(product);
