@@ -1,0 +1,24 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.4"
+services:
+  catalog.api:
+    build:
+      context: "D:\\Education\\CSharp\\Microservices\\UdemyProjects\\SuperSmartCourse\\\
+        EShopMicroservices\\src"
+      dockerfile: "Services/Catalog/Catalog.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Catalog.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "catalogapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\User\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Education\\CSharp\\Microservices\\UdemyProjects\\SuperSmartCourse\\EShopMicroservices\\\
+      src\\Services\\Catalog\\Catalog.API:/app:rw"
+    - "D:\\Education\\CSharp\\Microservices\\UdemyProjects\\SuperSmartCourse\\EShopMicroservices\\\
+      src:/src:rw"
+    working_dir: "/app"
