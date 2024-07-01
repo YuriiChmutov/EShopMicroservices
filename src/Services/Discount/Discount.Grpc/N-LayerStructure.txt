@@ -1,0 +1,7 @@
+﻿Models folder --> Domain layer
+
+Data folder --> Data access layer
+
+Services folder --> Business layer
+
+Protos folder --> Presentation layer
