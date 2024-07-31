@@ -25,10 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Grpc", "Services\D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{953555F1-16E7-4DB4-BC6C-7389903AEC01}"
 	ProjectSection(SolutionItems) = preProject
-		ProjectStructure.txt = ProjectStructure.txt
+		Services\Ordering\Ordering.API\Clean-Architecuture.txt = Services\Ordering\Ordering.API\Clean-Architecuture.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{0A5D2C14-BE11-4F07-B38C-978ACDB44B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{0A5D2C14-BE11-4F07-B38C-978ACDB44B09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{1F2D31A3-D8D8-485D-9E99-3A891E1D63C2}"
 EndProject
