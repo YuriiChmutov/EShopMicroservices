@@ -1,0 +1,13 @@
+Ordering.Domain:
+	- Domain models like Order, OrderItem, Customer, Product.
+	- Value objects, events, exceptions and base entity classes
+
+Ordering.Application:
+	- CQRS commands and handlers organized by features
+	- DI configuration
+
+Ordering.Infrastructure:
+	- Db context, configurations, migrations and initial data seeding
+
+Ordering.API:
+	- API contracts and endpoint definitions.
